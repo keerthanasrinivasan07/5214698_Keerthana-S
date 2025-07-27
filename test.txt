@@ -1,2 +1,0 @@
-Initial line
-line for diff
