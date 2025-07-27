@@ -1,0 +1,23 @@
+# test.txt - Git Practice File
+
+This file is used to practice various Git commands like diff, stash, commit, amend, and more.
+
+== Section 1: Initial Commit ==
+This is the initial content of the file.
+Learning Git is fun and powerful.
+
+== Section 2: After First Change ==
+You can track file changes using 'git diff'.
+'git commit -a -m' allows committing staged and tracked files.
+
+== Section 3: Stash and Rebase ==
+Git stash temporarily saves changes.
+Git rebase helps to maintain clean commit history.
+
+== Section 4: Tagging and Patching ==
+Tagging helps mark versions like v1.0.
+Git format-patch is useful for sending commits as email patches.
+
+== Section 5: Branching and Reset ==
+'git checkout -b' creates new branches like dev, qa.
+'git reset' and 'revert' are powerful but should be used carefully.

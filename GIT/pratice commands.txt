@@ -1,0 +1,152 @@
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        GIT/
+        SDLC/
+
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git add .
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git commit -m "Added Simplilearn and SDLC certificates, updated README"
+[main f112ba8] Added Simplilearn and SDLC certificates, updated README
+ 4 files changed, 16 insertions(+), 1 deletion(-)
+ create mode 100644 GIT/simplilearn_certificate.jpg
+ create mode 100644 SDLC/agile_certificate.jpg
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git push origin main
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 134.74 KiB | 3.74 MiB/s, done.
+Total 8 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/keerthanasrinivasan07/5214698_Keerthana-S.git
+   8d06575..f112ba8  main -> main
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git rm index.html
+rm 'index.html'
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git commit -m "deleted index.html file"
+[main 5715bc7] deleted index.html file
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 index.html
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git push origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 215 bytes | 43.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/keerthanasrinivasan07/5214698_Keerthana-S.git
+   f112ba8..5715bc7  main -> main
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$   echo "Initial line" > test.txt
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git add test.txt
+warning: in the working copy of 'test.txt', LF will be replaced by CRLF the next time Git touches it
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git commit -m "initial commit with test.txt"
+[main 49f7e9e] initial commit with test.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test.txt
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git branch dev
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (main)
+$ git checkout dev
+Switched to branch 'dev'
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (dev)
+$ git push -u origin dev
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 277 bytes | 138.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote:
+remote: Create a pull request for 'dev' on GitHub by visiting:
+remote:      https://github.com/keerthanasrinivasan07/5214698_Keerthana-S/pull/new/dev
+remote:
+To https://github.com/keerthanasrinivasan07/5214698_Keerthana-S.git
+ * [new branch]      dev -> dev
+branch 'dev' set up to track 'origin/dev'.
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (dev)
+$ git branch
+* dev
+  main
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (dev)
+$ git branch qa
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (dev)
+$ git checkout qa
+Switched to branch 'qa'
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (qa)
+$ git push -u origin qa
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'qa' on GitHub by visiting:
+remote:      https://github.com/keerthanasrinivasan07/5214698_Keerthana-S/pull/new/qa
+remote:
+To https://github.com/keerthanasrinivasan07/5214698_Keerthana-S.git
+ * [new branch]      qa -> qa
+branch 'qa' set up to track 'origin/qa'.
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (qa)
+$ echo "line for diff" >> test.txt
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (qa)
+$ git diff
+warning: in the working copy of 'test.txt', LF will be replaced by CRLF the next time Git touches it
+diff --git a/test.txt b/test.txt
+index 9d2deba..016ee8b 100644
+--- a/test.txt
++++ b/test.txt
+@@ -1 +1,2 @@
+ Initial line
++line for diff
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (qa)
+$ git commit -a -m "direct commit without staging"
+warning: in the working copy of 'test.txt', LF will be replaced by CRLF the next time Git touches it
+[qa 80dc77e] direct commit without staging
+ 1 file changed, 1 insertion(+)
+
+Keerthana@DESKTOP-D9PRDAD MINGW64 ~/OneDrive/Documents/5214698_Keerthana-S (qa)
+$ git status
+On branch qa
+Your branch is ahead of 'origin/qa' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+direct commit without staging
+
