@@ -12,4 +12,4 @@ Practicing Git Bash to GitHub connection
 
 ## 🛠 Git Simplilearn Course Certificate
 
-![Simplilearn Git Certificate](GIT/simplilearn_certificate.jpg)
+
