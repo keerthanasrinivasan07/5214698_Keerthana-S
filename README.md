@@ -13,11 +13,11 @@ Practicing Git Bash to GitHub connection
 
 ## ✅ Sololearn C Program Introduction Certificate
 
-![Sololearn C Program Introduction Certificate](C PROGRAMMING/C_introduction_certificate.jpg)
+![image alt](https://github.com/keerthanasrinivasan07/5214698_Keerthana-S/blob/main/C%20PROGRAMMING/C_introduction_certificate.jpg)
 
 ## 🔰Sololearn C Program Intermediate Certificate
 
-![Sololearn C Program Intermediate Certificate](C PROGRAMMING/C_intermediate_certificate.jpg)
+![image alt](https://github.com/keerthanasrinivasan07/5214698_Keerthana-S/blob/main/C%20PROGRAMMING/C_intermediate_certificate.jpg)
  
 
 
