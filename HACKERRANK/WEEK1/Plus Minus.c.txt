@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+    int totalNumbers;
+    scanf("%d", &totalNumbers);
+
+    int current;
+    int countAbove = 0;
+    int countBelow = 0;
+    int countZero = 0;
+
+    for (int i = 0; i < totalNumbers; i++) {
+        scanf("%d", &current);
+
+        if (current > 0) {
+            countAbove += 1;
+        } else if (current < 0) {
+            countBelow += 1;
+        } else {
+            countZero += 1;
+        }
+    }
+
+    double ratioAbove = (double)countAbove / totalNumbers;
+    double ratioBelow = (double)countBelow / totalNumbers;
+    double ratioZero  = (double)countZero  / totalNumbers;
+
+    printf("%.6lf\n", ratioAbove);
+    printf("%.6lf\n", ratioBelow);
+    printf("%.6lf\n", ratioZero);
+
+    return 0;
+}
