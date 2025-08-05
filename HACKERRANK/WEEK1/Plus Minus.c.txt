@@ -25,9 +25,9 @@ int main() {
     double ratioBelow = (double)countBelow / totalNumbers;
     double ratioZero  = (double)countZero  / totalNumbers;
 
-    printf("%.6lf\n", ratioAbove);
-    printf("%.6lf\n", ratioBelow);
-    printf("%.6lf\n", ratioZero);
+    printf("%.6f\n", ratioAbove);
+    printf("%.6f\n", ratioBelow);
+    printf("%.6f\n", ratioZero);
 
     return 0;
 }

@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    char input[11];
+    scanf("%s", input);
+
+    int hrs = (input[0] - '0') * 10 + (input[1] - '0');
+
+    if (input[8] == 'A' && hrs == 12)
+        hrs = 0;
+    else if (input[8] == 'P' && hrs != 12)
+        hrs += 12;
+
+    printf("%02d:%c%c:%c%c\n", hrs, input[3], input[4], input[6], input[7]);
+
+    return 0;
+}
