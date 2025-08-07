@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char s[1001];
+    int count[26] = {0};
+    int i, flag = 1;
+
+    fgets(s, sizeof(s), stdin);
+
+    for (i = 0; s[i] != '\0'; i++) {
+        if ((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z')) {
+            char ch = tolower(s[i]);
+            count[ch - 'a'] = 1;
+        }
+    }
+
+    for (i = 0; i < 26; i++) {
+        if (count[i] == 0) {
+            flag = 0;
+            break;
+        }
+    }
+
+    if (flag)
+        printf("pangram\n");
+    else
+        printf("not pangram\n");
+
+    return 0;
+}
