@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main(){
+    int t;
+    scanf("%d",&t);
+    while(t--){
+        int n,m;
+        scanf("%d%d",&n,&m);
+        int win;
+        if(m==1){
+            win=2;
+        } else if(n%2==0){
+            win=2;
+        } else {
+            win=1;
+        }
+        printf("%d\n",win);
+    }
+    return 0;
+}

@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main(){
+    int n,p;
+    scanf("%d%d",&n,&p);
+    int x = p/2;
+    int y = (n/2) - (p/2);
+    if(x<y){
+        printf("%d\n",x);
+    } else {
+        printf("%d\n",y);
+    }
+    return 0;
+}
