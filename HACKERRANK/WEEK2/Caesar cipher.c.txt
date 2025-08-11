@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void caesarShift(char str[], int s) {
+    int l = strlen(str);
+    s = s % 26;
+
+    for (int i = 0; i < l; i++) {
+        if ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')) {
+            char base = (str[i] >= 'a') ? 'a' : 'A';
+            str[i] = ((str[i] - base + s) % 26) + base;
+        }
+    }
+}
+
+int main() {
+    int l, s;
+    char input[101];
+
+    scanf("%d", &l);
+    scanf("%s", input);
+    scanf("%d", &s);
+
+    caesarShift(input, s);
+    printf("%s\n", input);
+
+    return 0;
+}
