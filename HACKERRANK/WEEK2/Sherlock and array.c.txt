@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+char* c(int a[], int n) {
+    long total = 0;
+    long left = 0;
+    for (int i = 0; i < n; i++) {
+        total += a[i];
+    }
+    for (int i = 0; i < n; i++) {
+        long right = total - left - a[i];
+        if (left == right) {
+            return "YES";
+        }
+        left += a[i];
+    }
+    return "NO";
+}
+
+int main() {
+    int t;
+    scanf("%d", &t);
+    while (t--) {
+        int n;
+        scanf("%d", &n);
+        int arr[100000];
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &arr[i]);
+        }
+        printf("%s\n", c(arr, n));
+    }
+    return 0;
+}
