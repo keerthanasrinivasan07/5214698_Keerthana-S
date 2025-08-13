@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int t;
+    scanf("%d", &t);
+    while (t--) {
+        unsigned long long n;
+        scanf("%llu", &n);
+        int c = 0;
+        while (n > 1) {
+            unsigned long long p = 1;
+            while (p << 1 <= n) p <<= 1;
+            if (n == p) n >>= 1;
+            else n -= p;
+            c++;
+        }
+        if (c % 2) printf("Louise\n");
+        else printf("Richard\n");
+    }
+    return 0;
+}

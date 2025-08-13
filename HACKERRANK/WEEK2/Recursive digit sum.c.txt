@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+int sd(long long n) {
+    while (n >= 10) {
+        long long s = 0;
+        while (n) {
+            s += n % 10;
+            n /= 10;
+        }
+        n = s;
+    }
+    return (int)n;
+}
+
+int main() {
+    char l[100005];
+    int d;
+    scanf("%s %d", l, &d);
+
+    long long s = 0;
+    for (int i = 0; i < strlen(l); i++) s += l[i] - '0';
+
+    s *= d;
+    printf("%d\n", sd(s));
+    return 0;
+}
