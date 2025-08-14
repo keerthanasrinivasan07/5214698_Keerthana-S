@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int r,c,n;
+    scanf("%d%d%d",&r,&c,&n);
+    char g1[201][201], g2[201][201], g3[201][201];
+    for(int i=0;i<r;i++) scanf("%s",g1[i]);
+
+    if(n==1){
+        for(int i=0;i<r;i++) printf("%s\n",g1[i]);
+        return 0;
+    }
+
+    if(n%2==0){
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++) putchar('O');
+            putchar('\n');
+        }
+        return 0;
+    }
+
+    // first explosion
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++) g2[i][j]='O';
+        g2[i][c]='\0';
+    }
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            if(g1[i][j]=='O'){
+                g2[i][j]='.';
+                if(i>0) g2[i-1][j]='.';
+                if(i<r-1) g2[i+1][j]='.';
+                if(j>0) g2[i][j-1]='.';
+                if(j<c-1) g2[i][j+1]='.';
+            }
+        }
+    }
+
+    // second explosion
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++) g3[i][j]='O';
+        g3[i][c]='\0';
+    }
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            if(g2[i][j]=='O'){
+                g3[i][j]='.';
+                if(i>0) g3[i-1][j]='.';
+                if(i<r-1) g3[i+1][j]='.';
+                if(j>0) g3[i][j-1]='.';
+                if(j<c-1) g3[i][j+1]='.';
+            }
+        }
+    }
+
+    if(n%4==3){
+        for(int i=0;i<r;i++) printf("%s\n",g2[i]);
+    }else{
+        for(int i=0;i<r;i++) printf("%s\n",g3[i]);
+    }
+
+    return 0;
+}
