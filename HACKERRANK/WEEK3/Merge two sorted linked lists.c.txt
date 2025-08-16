@@ -1,0 +1,37 @@
+// if one of the lists is empty, return the other
+    if (head1 == NULL) return head2;
+    if (head2 == NULL) return head1;
+
+    SinglyLinkedListNode* mergedHead = NULL;
+    SinglyLinkedListNode* tail = NULL;
+
+    // choose the first node
+    if (head1->data <= head2->data) {
+        mergedHead = head1;
+        head1 = head1->next;
+    } else {
+        mergedHead = head2;
+        head2 = head2->next;
+    }
+    tail = mergedHead;
+
+    // merge the rest
+    while (head1 != NULL && head2 != NULL) {
+        if (head1->data <= head2->data) {
+            tail->next = head1;
+            head1 = head1->next;
+        } else {
+            tail->next = head2;
+            head2 = head2->next;
+        }
+        tail = tail->next;
+    }
+
+    // attach the remaining nodes
+    if (head1 != NULL) {
+        tail->next = head1;
+    } else {
+        tail->next = head2;
+    }
+
+    return mergedHead;

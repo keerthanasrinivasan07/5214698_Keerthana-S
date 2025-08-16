@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int* i(int money, int size, int* cost, int* result_count) {
+    *result_count = 2;   // always return 2 indices
+    int *ans = (int*)malloc(2 * sizeof(int));
+
+    for (int a = 0; a < size; a++) {
+        for (int b = a + 1; b < size; b++) {
+            if (cost[a] + cost[b] == money) {
+                ans[0] = a + 1;   // 1-based index
+                ans[1] = b + 1;
+                return ans;
+            }
+        }
+    }
+
+    return ans;
+}
+
+int main() {
+    int t;
+    scanf("%d", &t);
+
+    while (t--) {
+        int m, n;
+        scanf("%d", &m);
+        scanf("%d", &n);
+
+        int *arr = (int*)malloc(n * sizeof(int));
+        for (int k = 0; k < n; k++) {
+            scanf("%d", &arr[k]);
+        }
+
+        int res_count;
+        int *res = i(m, n, arr, &res_count);
+
+        for (int x = 0; x < res_count; x++) {
+            printf("%d ", res[x]);
+        }
+        printf("\n");
+
+        free(arr);
+        free(res);
+    }
+
+    return 0;
+}
