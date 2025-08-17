@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Helper function to check prime
+int isPrime(int n) {
+    if (n < 2) return 0;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return 0;
+    }
+    return 1;
+}
+
+// Generate first 'q' primes
+void generatePrimes(int q, int *primes) {
+    int num = 2, count = 0;
+    while (count < q) {
+        if (isPrime(num)) {
+            primes[count++] = num;
+        }
+        num++;
+    }
+}
+
+// Main waiter function
+int* waiter(int number_count, int* number, int q, int* result_count) {
+    int *primes = (int*)malloc(sizeof(int) * q);
+    generatePrimes(q, primes);
+
+    // Dynamic array for result
+    int *result = (int*)malloc(sizeof(int) * number_count);
+    int resIndex = 0;
+
+    // Stacks
+    int *A = (int*)malloc(sizeof(int) * number_count);
+    int A_top = number_count - 1;
+
+    for (int i = 0; i < number_count; i++) {
+        A[i] = number[i];
+    }
+
+    for (int i = 0; i < q; i++) {
+        int *nextA = (int*)malloc(sizeof(int) * number_count);
+        int nextA_top = -1;
+
+        int *B = (int*)malloc(sizeof(int) * number_count);
+        int B_top = -1;
+
+        while (A_top >= 0) {
+            int val = A[A_top--];
+            if (val % primes[i] == 0) {
+                B[++B_top] = val;
+            } else {
+                nextA[++nextA_top] = val;
+            }
+        }
+
+        // Pop B into result
+        while (B_top >= 0) {
+            result[resIndex++] = B[B_top--];
+        }
+
+        free(A);
+        A = nextA;
+        A_top = nextA_top;
+        free(B);
+    }
+
+    // Add remaining A stack
+    while (A_top >= 0) {
+        result[resIndex++] = A[A_top--];
+    }
+
+    *result_count = resIndex;
+    free(A);
+    free(primes);
+    return result;
+}
+
+// For local testing
+int main() {
+    int n, q;
+    scanf("%d %d", &n, &q);
+
+    int *arr = (int*)malloc(sizeof(int) * n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    int result_count;
+    int *ans = waiter(n, arr, q, &result_count);
+
+    for (int i = 0; i < result_count; i++) {
+        printf("%d\n", ans[i]);
+    }
+
+    free(arr);
+    free(ans);
+    return 0;
+}
