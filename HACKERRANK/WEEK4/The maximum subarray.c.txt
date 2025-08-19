@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int main() {
+    int t;
+    scanf("%d", &t);
+
+    while(t--) {
+        int n;
+        scanf("%d", &n);
+
+        int a[n];
+        for(int i=0; i<n; i++)
+            scanf("%d", &a[i]);
+
+        // Maximum subarray sum
+        int m = a[0];
+        int s = a[0];
+        for(int i=1; i<n; i++) {
+            if(s < 0)
+                s = a[i];
+            else
+                s += a[i];
+            if(s > m)
+                m = s;
+        }
+
+        // Maximum subsequence sum
+        int p = 0;
+        int f = 0;
+        int x = a[0];
+
+        for(int i=0; i<n; i++) {
+            if(a[i] > 0) {
+                p += a[i];
+                f = 1;
+            }
+            if(a[i] > x)
+                x = a[i];
+        }
+
+        if(!f)
+            p = x;
+
+        printf("%d %d\n", m, p);
+    }
+
+    return 0;
+}
