@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void w(int *a,int *b){int t=*a;*a=*b;*b=t;}
+
+void h(int a[],int n,int x){
+    int s=x,l=2*x+1,r=2*x+2;
+    if(l<n && a[l]<a[s]) s=l;
+    if(r<n && a[r]<a[s]) s=r;
+    if(s!=x){w(&a[x],&a[s]);h(a,n,s);}
+}
+
+int e(int a[],int *n){
+    if(*n==0) return -1;
+    int r=a[0];
+    a[0]=a[*n-1];
+    (*n)--;
+    if(*n>0) h(a,*n,0);
+    return r;
+}
+
+void i(int a[],int *n,int v){
+    int x=*n;
+    a[x]=v;
+    (*n)++;
+    while(x>0 && a[(x-1)/2]>a[x]){
+        w(&a[x],&a[(x-1)/2]);
+        x=(x-1)/2;
+    }
+}
+
+int s(int k,int a[],int n){
+    for(int j=n/2-1;j>=0;j--) h(a,n,j);
+    int c=0;
+    while(n>0 && a[0]<k){
+        if(n<2) return -1;
+        int f=e(a,&n);
+        int g=e(a,&n);
+        int nw=f+2*g;
+        i(a,&n,nw);
+        c++;
+    }
+    return c;
+}
+
+int main(){
+    int n,k;
+    scanf("%d %d",&n,&k);
+    int *a=(int*)malloc(n*sizeof(int));
+    for(int j=0;j<n;j++) scanf("%d",&a[j]);
+    int ans=s(k,a,n);
+    printf("%d\n",ans);
+    free(a);
+    return 0;
+}
