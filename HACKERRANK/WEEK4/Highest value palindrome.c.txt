@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+
+char s[100005];
+int c[100005];
+
+int main() {
+    int n,k;
+    scanf("%d %d",&n,&k);
+    scanf("%s",s);
+
+    int i=0,j=n-1,chg=0;
+    while(i<j) {
+        if(s[i]!=s[j]) {
+            if(s[i]>s[j]) s[j]=s[i];
+            else s[i]=s[j];
+            c[i]=c[j]=1;
+            chg++;
+        }
+        i++; j--;
+    }
+    if(chg>k) {
+        printf("-1\n");
+        return 0;
+    }
+
+    i=0; j=n-1;
+    int left=k-chg;
+    while(i<=j) {
+        if(i==j) {
+            if(left>0 && s[i]!='9') s[i]='9';
+        } else {
+            if(s[i]!='9') {
+                if(c[i] && left>0) {
+                    s[i]=s[j]='9';
+                    left--;
+                } else if(!c[i] && left>1) {
+                    s[i]=s[j]='9';
+                    left-=2;
+                }
+            }
+        }
+        i++; j--;
+    }
+
+    printf("%s\n",s);
+    return 0;
+}
