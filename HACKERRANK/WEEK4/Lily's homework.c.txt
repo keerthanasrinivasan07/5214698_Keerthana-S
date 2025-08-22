@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int v;
+    int i;
+} P;
+
+int c(const void *a,const void *b){
+    P *x=(P*)a;
+    P *y=(P*)b;
+    return x->v-y->v;
+}
+
+int f(int *a,int n,int r){
+    P *p=(P*)malloc(n*sizeof(P));
+    int i;
+    for(i=0;i<n;i++){
+        p[i].v=a[i];
+        p[i].i=i;
+    }
+    qsort(p,n,sizeof(P),c);
+    if(r){
+        for(i=0;i<n/2;i++){
+            P t=p[i];
+            p[i]=p[n-1-i];
+            p[n-1-i]=t;
+        }
+    }
+    int *v=(int*)calloc(n,sizeof(int));
+    int ans=0;
+    for(i=0;i<n;i++){
+        if(v[i]||p[i].i==i) continue;
+        int j=i,cnt=0;
+        while(!v[j]){
+            v[j]=1;
+            j=p[j].i;
+            cnt++;
+        }
+        ans+=cnt-1;
+    }
+    free(v);
+    free(p);
+    return ans;
+}
+
+int h(int *a,int n){
+    int x=f(a,n,0);
+    int y=f(a,n,1);
+    return x<y?x:y;
+}
+
+int main(){
+    int n,i;
+    scanf("%d",&n);
+    int *a=(int*)malloc(n*sizeof(int));
+    for(i=0;i<n;i++) scanf("%d",&a[i]);
+    printf("%d\n",h(a,n));
+    free(a);
+    return 0;
+}
