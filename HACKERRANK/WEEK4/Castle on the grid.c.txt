@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define N 105
+char g[N][N];   // grid
+int v[N][N];    // visited
+int qx[N*N], qy[N*N], qs, qe;
+int n;
+
+int d(int sx, int sy, int gx, int gy) {
+    qs = qe = 0;
+    qx[qe] = sx; qy[qe] = sy; v[sx][sy] = 1; qe++;
+    while (qs < qe) {
+        int x = qx[qs], y = qy[qs]; qs++;
+        if (x == gx && y == gy) return v[x][y] - 1;
+        // move up
+        for (int i = x-1; i >= 0 && g[i][y] == '.'; i--) 
+            if (!v[i][y]) { v[i][y] = v[x][y]+1; qx[qe]=i; qy[qe]=y; qe++; }
+        // move down
+        for (int i = x+1; i < n && g[i][y] == '.'; i++) 
+            if (!v[i][y]) { v[i][y] = v[x][y]+1; qx[qe]=i; qy[qe]=y; qe++; }
+        // move left
+        for (int j = y-1; j >= 0 && g[x][j] == '.'; j--) 
+            if (!v[x][j]) { v[x][j] = v[x][y]+1; qx[qe]=x; qy[qe]=j; qe++; }
+        // move right
+        for (int j = y+1; j < n && g[x][j] == '.'; j++) 
+            if (!v[x][j]) { v[x][j] = v[x][y]+1; qx[qe]=x; qy[qe]=j; qe++; }
+    }
+    return -1;
+}
+
+int main() {
+    scanf("%d", &n);
+    for (int i=0;i<n;i++) scanf("%s", g[i]);
+    int sx, sy, gx, gy;
+    scanf("%d %d %d %d", &sx, &sy, &gx, &gy);
+    printf("%d\n", d(sx,sy,gx,gy));
+    return 0;
+}

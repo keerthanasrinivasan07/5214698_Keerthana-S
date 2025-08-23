@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define N 100005
+#define M 200005
+
+int v[N], head[N], nxt[M], to[M], idx;
+
+void add(int u, int w) {
+    to[idx] = w;
+    nxt[idx] = head[u];
+    head[u] = idx++;
+}
+
+int dfs(int u) {
+    int c = 1;
+    v[u] = 1;
+    for (int e = head[u]; e != -1; e = nxt[e]) {
+        int x = to[e];
+        if (!v[x]) c += dfs(x);
+    }
+    return c;
+}
+
+long long r(int n, int m, long long cl, long long cr) {
+    if (cr >= cl) return (long long)n * cl;
+
+    long long ans = 0;
+    for (int i = 1; i <= n; i++) {
+        if (!v[i]) {
+            int c = dfs(i);
+            ans += cl + (long long)(c - 1) * cr;
+        }
+    }
+    return ans;
+}
+
+int main() {
+    int q;
+    scanf("%d", &q);
+    while (q--) {
+        int n, m;
+        long long cl, cr;
+        scanf("%d %d %lld %lld", &n, &m, &cl, &cr);
+
+        for (int i = 1; i <= n; i++) {
+            v[i] = 0;
+            head[i] = -1;
+        }
+        idx = 0;
+
+        for (int i = 0; i < m; i++) {
+            int u, w;
+            scanf("%d %d", &u, &w);
+            add(u, w);
+            add(w, u);
+        }
+
+        printf("%lld\n", r(n, m, cl, cr));
+    }
+    return 0;
+}
